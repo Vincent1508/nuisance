@@ -81,8 +81,26 @@ GENIEWeightEngine::GENIEWeightEngine(std::string name) {
         "V3+ events. Add a config parameter like: <config "
         "GENIETune=\"G18_10a_02_11a\" /> to your nuisance card.");
   }
+
   grunopt->SetTuneName(Config::GetParS("GENIETune"));
   grunopt->BuildTune();
+
+  // Load GENIE native cross-section splines, if provided.
+  // This populates XSecSplineList and avoids expensive on-the-fly
+  // integrations during e.g. MaCCRESshape reweighting.
+  if (Config::HasPar("GENIEXSecSplineFile")) {
+    std::string xsec_spline_file =
+      Config::GetParS("GENIEXSecSplineFile");
+    
+    if (!xsec_spline_file.empty()) {
+      NUIS_LOG(FIT,
+	       "Loading GENIE cross-section splines from: "
+	       << xsec_spline_file);
+      
+      genie::utils::app_init::XSecTable(xsec_spline_file, false);
+    }
+  }
+  
   std::string genv =
       std::string(getenv("GENIE")) + "/config/Messenger_laconic.xml";
   genie::utils::app_init::MesgThresholds(genv);
