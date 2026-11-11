@@ -260,6 +260,7 @@
 #include "MINERvA_CCinc_XSec_1DEnu_ratio.h"
 #include "MINERvA_CCinc_XSec_1Dx_ratio.h"
 #include "MINERvA_CCinc_XSec_2DEavq3_nu.h"
+#include "MINERvA_CCinc_XSec_2DEavq3_nu_2022.h"
 
 // MINERvA CCDIS
 #include "MINERvA_CCDIS_XSec_1DEnu_ratio.h"
@@ -1424,7 +1425,10 @@ MeasurementBase *CreateSample(nuiskey samplekey) {
            CCINC
            */
       } else if (!name.compare("MINERvA_CCinc_XSec_2DEavq3_nu")) {
-        return (new MINERvA_CCinc_XSec_2DEavq3_nu(samplekey));
+	return (new MINERvA_CCinc_XSec_2DEavq3_nu(samplekey));
+
+      } else if (!name.compare("MINERvA_CCinc_XSec_2DEavq3_nu_2022")) {
+	return (new MINERvA_CCinc_XSec_2DEavq3_nu_2022(samplekey));
 
       } else if (!name.compare("MINERvA_CCinc_XSec_1Dx_ratio_C12_CH") ||
           !name.compare("MINERvA_CCinc_XSec_1Dx_ratio_Fe56_CH") ||

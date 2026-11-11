@@ -62,6 +62,7 @@ set(MINERvA_Impl_Files
   MINERvA_CCNpip_XSec_1Dthmu_nu.cxx
 
   MINERvA_CCinc_XSec_2DEavq3_nu.cxx
+  MINERvA_CCinc_XSec_2DEavq3_nu_2022.cxx
   MINERvA_CCinc_XSec_1Dx_ratio.cxx
   MINERvA_CCinc_XSec_1DEnu_ratio.cxx
   MINERvA_CCinc_XSec_1Dx_nu.cxx
