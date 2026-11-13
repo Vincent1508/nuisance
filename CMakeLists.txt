@@ -40,7 +40,9 @@ elseif(NOT DEFINED CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE RELWITHDEBINFO)
 endif()
 
-LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
+LIST(PREPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
+# Enable MINERvA-specific reweight calculators used by this fork.
+add_compile_definitions(__MINERVA_RW_ENABLED__)
 
 include(CPM)
 if(DEFINED ENV{NuHepMCModules_ROOT})
